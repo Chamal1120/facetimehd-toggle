@@ -1,0 +1,66 @@
+name: Release Binary
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on release tags
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: Run tests
+      run: cargo test
+
+    - name: Build project
+      run: cargo build --release
+
+    - name: Upload release binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: facetimehd-toggle 
+        path: target/release/facetimehd-toggle
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Download built binary
+      uses: actions/download-artifact@v4
+      with:
+        name: facetimehd-toggle
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Binary to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./facetimehd-toggle
+        asset_name: facetimehd-toggle
+        asset_content_type: application/octet-stream
+
