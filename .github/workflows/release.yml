@@ -30,8 +30,8 @@ jobs:
     - name: Upload release binary
       uses: actions/upload-artifact@v4
       with:
-        name: facetimehd-toggle 
-        path: target/release/facetimehd-toggle
+        name: facetimehd_toggle 
+        path: target/release/facetimehd_toggle
 
   release:
     needs: build
@@ -43,7 +43,7 @@ jobs:
     - name: Download built binary
       uses: actions/download-artifact@v4
       with:
-        name: facetimehd-toggle
+        name: facetimehd_toggle
 
     - name: Create Release
       id: create_release
@@ -62,7 +62,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./facetimehd-toggle
-        asset_name: facetimehd-toggle
+        asset_path: ./facetimehd_toggle
+        asset_name: facetimehd_toggle
         asset_content_type: application/octet-stream
 
