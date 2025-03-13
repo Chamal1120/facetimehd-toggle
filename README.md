@@ -84,10 +84,10 @@ systemctl --user start facetimehd-toggle.service
 systemctl --user status facetimehd-toggle.service
 ```
 
-## Aur Package is coming soon...
+*Aur Package is coming soon...*
 
 ## Contributing
 
-This software is licensed under MIT and any contribution very much welcome. 
+This software is licensed under MIT and any contribution is very much welcome. 
 
 ## Thank You
