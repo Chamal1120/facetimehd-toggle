@@ -1,5 +1,6 @@
 use facetimehd_toggle::run_command;
 
+// This is a simple method to test run command function
 #[test]
 fn test_run_command_success() {
     let result = run_command("echo", &["Hello", "Rust"]);

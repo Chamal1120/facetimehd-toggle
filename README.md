@@ -43,7 +43,7 @@ mkinitcpio -P # arch linux syntax
 reboot
 ```
 
-4. Grab the binary and install to anywhere you like.
+4. Install facetimehd toggle.
 
 5. You can now run the applet and check the functionality.
 
@@ -98,9 +98,5 @@ exec-once = env DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS <path/to/your
 
 *Aur Package is coming soon...*
 
-## Contributing
-
-This software is licensed under MIT and any contribution is very much welcome. 
-
-## Thanking
-You are a cool human being if you read up to this line. You can become even cooler by sharing this with another friend who you think might be suffering without a solution. And also star the repo if you think this helped you.
+## License
+This project is Licensed under MIT license.

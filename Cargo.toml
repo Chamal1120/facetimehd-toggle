@@ -1,7 +1,11 @@
 [package]
 name = "facetimehd_toggle"
-version = "0.1.0"
+version = "0.1.1"
+authors = ["kenway213beep@gmail.com"]
 edition = "2021"
+description = "A FaceTimeHD toggle indicator for Macs running Linux"
+license = "MIT"
+repository = "https://github.com/Chamal1120/facetimehd_toggle"
 
 [dependencies]
 gtk = { version = "0.18", features = ["v3_24"] }
