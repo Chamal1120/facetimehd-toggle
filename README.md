@@ -43,9 +43,16 @@ mkinitcpio -P # arch linux syntax
 reboot
 ```
 
-4. Install facetimehd toggle.
+4. Download the binary from the releases and move it to /usr/bin or build it using the following steps: 
+```
+sudo pacman -S rust cargo gtk3
+git clone https://github.com/Chamal1120/facetimehd-toggle.git
+cd facetimehd-toggle
+cargo build --release
+sudo cp target/release/facetimehd_toggle /usr/bin/
+```
 
-5. You can now run the applet and check the functionality.
+5. You can now run the applet by using the following command: `/usr/bin/facetimehd_toggle`
 
 ## Make the systray auto start on boot
 
@@ -66,7 +73,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/facetimehd-toggle
+ExecStart=/usr/bin/facetimehd_toggle
 Restart=on-failure
 
 [Install]
