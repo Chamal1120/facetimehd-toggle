@@ -18,41 +18,69 @@ Because no one does it. Keeping the module loaded prevents few macs from going t
 
 ## How to setup?
 
+Same commands for both Debian and Arch-based distros, unless separately listed.
+
 1. First you need the [facetimehd kernel module driver](https://github.com/patjak/facetimehd) to be installed:
 
-```bash
-yay -S facetimehd-dkms # arch linux syntax
-```
+   Debian: Follow the instructions [here](https://github.com/patjak/facetimehd/wiki/Installation#get-started-on-debian).
+
+   Arch:
+
+   ```bash
+   yay -S facetimehd-dkms # arch linux syntax
+   ```
 
 2. Disable it from loading at startup:
+  
+   ```bash
+   sudo vim /etc/modprobe.d/blacklist-facetimehd.conf # this will open the file with vim
+   ```
 
-```bash
-sudo vim /etc/modprobe.d/blacklist-facetimehd.conf # this will open the file with vim
-```
+   then add following line to it.
 
-then add following line to it.
-
-```
-blacklist facetimehd
-```
+   ```bash
+   blacklist facetimehd
+   ```
 
 3. Rebuild the `initramfs` and reboot the system:
 
-```bash
-mkinitcpio -P # arch linux syntax
-reboot
-```
+   Debian:
 
-4. Download the binary from the releases and move it to /usr/bin or build it using the following steps: 
-```
-sudo pacman -S rust cargo gtk3
-git clone https://github.com/Chamal1120/facetimehd-toggle.git
-cd facetimehd-toggle
-cargo build --release
-sudo cp target/release/facetimehd_toggle /usr/bin/
-```
+   ```bash
+   update-initramfs -u
+   ```
 
-5. You can now run the applet by using the following command: `/usr/bin/facetimehd_toggle`
+   Arch:
+
+   ```bash
+   mkinitcpio -P # arch linux syntax
+   reboot
+   ```
+
+5. Install dependencies
+
+   Debian:
+
+   ```bash
+   sudo apt install cargo libglib2.0-dev libpango1.0-dev libatk1.0-dev libgdk-pixbuf-2.0-dev libgtk-3-dev
+   ```
+
+   Arch:
+
+   ```bash
+   sudo pacman -S rust cargo gtk3
+   ```
+
+7. Download the binary from the releases and move it to /usr/bin or build it using the following steps:
+
+   ```
+   git clone https://github.com/Chamal1120/facetimehd-toggle.git
+   cd facetimehd-toggle
+   cargo build --release
+   sudo cp target/release/facetimehd_toggle /usr/bin/
+   ```
+
+6. You can now run the applet by using the following command: `/usr/bin/facetimehd_toggle`
 
 ## Make the systray auto start on boot
 
@@ -103,7 +131,7 @@ systemctl --user status facetimehd-toggle.service
 exec-once = env DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS <path/to/your/program>
 ```
 
-*Aur Package is coming soon...*
+*AUR Package is coming soon...*
 
 ## License
 This project is Licensed under MIT license.
