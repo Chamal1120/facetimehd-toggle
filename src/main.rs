@@ -37,6 +37,7 @@ fn main() {
     write_camera_state(initial_state);
 
     let current_state = Arc::new(AtomicBool::new(initial_state));
+
     let indicator = Arc::new(Mutex::new(
         AppIndicator::new("facetimehd_toggle", get_icon_name(initial_state)),
     ));
@@ -48,10 +49,10 @@ fn main() {
     // Enable Camera item
     let enable_item = gtk::MenuItem::with_label("Enable FaceTimeHD");
     enable_item.connect_activate(|_| {
-        match run_command("pkexec", &["modprobe", "facetimehd"]) {
+        match run_command("pkexec", &["/usr/local/bin/facetimehd-camera-on.sh"]) {
             Ok(_) => {
                 write_camera_state(true);
-                println!("Camera enabled - icon will update shortly");
+                println!("Camera enabled, ASPM disabled - icon will update shortly");
             }
             Err(e) => eprintln!("Failed to enable camera: {}", e),
         }
@@ -61,10 +62,10 @@ fn main() {
     // Disable Camera item
     let disable_item = gtk::MenuItem::with_label("Disable FaceTimeHD");
     disable_item.connect_activate(|_| {
-        match run_command("pkexec", &["modprobe", "-r", "facetimehd"]) {
+        match run_command("pkexec", &["/usr/local/bin/facetimehd-camera-off.sh"]) {
             Ok(_) => {
                 write_camera_state(false);
-                println!("Camera disabled - icon will update shortly");
+                println!("Camera disabled, ASPM re-enabled - icon will update shortly");
             }
             Err(e) => eprintln!("Failed to disable camera: {}", e),
         }
@@ -78,6 +79,7 @@ fn main() {
     ));
     status_item.set_sensitive(false);
     menu.append(&status_item);
+
     let status_item_clone = status_item.clone();
 
     // Quit item
@@ -94,7 +96,6 @@ fn main() {
     // Set up periodic state checking
     let current_state_clone = current_state.clone();
     let indicator_clone = indicator.clone();
-
     glib::timeout_add_seconds_local(2, move || {
         let new_state = read_camera_state();
         let old_state = current_state_clone.load(Ordering::Relaxed);
@@ -119,4 +120,3 @@ fn main() {
 
     gtk::main();
 }
-
