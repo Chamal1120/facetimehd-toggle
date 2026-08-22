@@ -149,8 +149,15 @@ Same commands for both Debian and Arch-based distros, unless separately listed.
 
    The camera stays off after resume — you'll need to re-enable it manually from the tray icon if you need it again
 
+8. Set up service enabling ASPM on boot (optional but recommended)
+   After booting, the camera by default does not have enabled power saving, and it will block the CPU from going to C6/C7 states, even if the facetimehd module is unloaded. The solution is to use a service to enable ASPM on boot. 
 
- 8. You can now run the applet by using the following command: `/usr/bin/facetimehd_toggle`
+   ```bash
+   sudo cp facetimehd-aspm-boot.service /etc/systemd/system/
+   sudo systemctl enable facetimehd-aspm-boot.service
+   ```
+   
+10. You can now run the applet by using the following command: `/usr/bin/facetimehd_toggle`
 
 ## Make the systray auto start on boot
 
