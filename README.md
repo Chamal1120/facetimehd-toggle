@@ -191,17 +191,6 @@ systemctl --user start facetimehd-toggle.service
 systemctl --user status facetimehd-toggle.service
 ```
 
-#### Hyprland user?
-
-1. Make sure you have hyprpolkit or another polkit agent setup.
-
-2. Then just put below line into your hyprland config and you're done.
-
-```bash
-exec-once = env DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS <path/to/your/program>
-```
-
-*AUR Package is coming soon...*
 
 ## License
 This project is licensed under the MIT license.
