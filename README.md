@@ -74,7 +74,7 @@ Same commands for both Debian and Arch-based distros, unless separately listed.
 7. Download the binary from the releases and move it to /usr/bin or build it using the following steps:
 
    ```
-   git clone https://github.com/Chamal1120/facetimehd-toggle.git
+   git clone https://github.com/lakotamm/facetimehd-toggle.git
    cd facetimehd-toggle
    cargo build --release
    sudo cp target/release/facetimehd_toggle /usr/bin/
