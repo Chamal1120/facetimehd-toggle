@@ -22,11 +22,12 @@ fn write_camera_state(enabled: bool) {
     let _ = fs::write(STATE_FILE, state);
 }
 
+//icons changed to some which are by default available in Adwaita
 fn get_icon_name(enabled: bool) -> &'static str {
     if enabled {
-        "camera-on"
+        "camera-photo-symbolic"
     } else {
-        "camera-off"
+        "camera-disabled-symbolic"
     }
 }
 
