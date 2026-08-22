@@ -1,0 +1,11 @@
+[Unit]
+Description=Set FaceTimeHD ASPM state at boot (camera starts off)
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/facetimehd-camera-off.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
