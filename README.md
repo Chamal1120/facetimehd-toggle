@@ -106,7 +106,7 @@ Same commands for both Debian and Arch-based distros, unless separately listed.
    Fedora:
 
    ```bash
-   sudo dnf install cargo atk-devel pango-devel gtk3-devel cairo-devel libayatana-appindicator3
+   sudo dnf install cargo atk-devel gdk-pixbuf2-devel glib2-devel pango-devel gtk3-devel cairo-devel libayatana-appindicator3
    ```
 
    Debian:
