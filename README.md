@@ -124,7 +124,7 @@ Same commands for both Debian and Arch-based distros, unless separately listed.
 5. Download the binary from the releases and move it to /usr/bin or build it using the following steps:
 
    ```
-   git clone https://github.com/lakotamm/facetimehd-toggle.git
+   git clone https://github.com/chamal1120/facetimehd-toggle.git
    cd facetimehd-toggle
    cargo build --release
    sudo cp target/release/facetimehd_toggle /usr/bin/
@@ -159,7 +159,7 @@ Same commands for both Debian and Arch-based distros, unless separately listed.
    sudo systemctl enable facetimehd-aspm-boot.service
    ```
    
-10. You can now run the applet by using the following command: `/usr/bin/facetimehd_toggle`
+9. You can now run the applet by using the following command: `/usr/bin/facetimehd_toggle`
 
 ## Make the systray auto start on boot
 
