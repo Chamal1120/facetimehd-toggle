@@ -6,6 +6,9 @@
 
 </div>
 
+> [!WARNING]
+> I no longer maintain this project since I lost my beloved MPB 12,1. @lakotamm volunteered that he will maintain it from now on. Please go to lakotamm's fork right [here](https://github.com/lakotamm/facetimehd-toggle) to get the most up to date version as few improvements are already there. Also huge thank to @emirvmendoza and @noelmiller for the valuable contributions. You two were my first OSS contributors. I will never forget this project.
+
 ## What is this?
 
 Just a simple systray applet to toggle facetimehd camera in MacBooks running Linux **as needed** using [`modprobe`](https://en.wikipedia.org/wiki/Modprobe).
